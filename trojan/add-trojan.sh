@@ -41,32 +41,32 @@ cat > /var/www/html/trojan/trojan-$user.txt << END
 Trojan WS (CDN) TLS
 ==========================
 - name: Trojan-$user
-server: $domain
-port: 443
-type: trojan
-password: $uuid
-network: ws
-sni: $domain
-skip-cert-verify: true
-udp: true
-ws-opts:
-path: /trojan
-headers:
-Host: $domain
+  server: $domain
+  port: 443
+  type: trojan
+  password: $uuid
+  network: ws
+  sni: $domain
+  skip-cert-verify: true
+  udp: true
+  ws-opts:
+   path: /trojan
+   headers:
+    Host: $domain
 ==========================
 Trojan gRPC (CDN)
 ==========================
 - name: Trojan-$user
-server: $domain
-port: 443
-type: trojan
-password: $uuid
-network: grpc
-sni: $domain
-skip-cert-verify: true
-udp: true
-grpc-opts:
-grpc-service-name: "trojan-grpc"
+  server: $domain
+  port: 443
+  type: trojan
+  password: $uuid
+  network: grpc
+  sni: $domain
+  skip-cert-verify: true
+  udp: true
+   grpc-opts:
+    grpc-service-name: "trojan-grpc"
 ==========================
 Link Trojan Account
 ==========================
