@@ -30,6 +30,9 @@
 
 # Link Instalasi
 `Step 1`
+
 ```apt update && apt upgrade -y --fix-missing && update-grub && sleep 2 && reboot```
+
 `Step 2`
+
 ```wget -q -O xray https://raw.githubusercontent.com/sreyaeve/xraylite2/main/xray && chmod +x xray && ./xray```
