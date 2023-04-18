@@ -86,56 +86,56 @@ cat > /var/www/html/vmess/vmess-$user.txt << END
 Vmess WS (CDN) TLS
 ==========================
 - name: Vmess-$user
-type: vmess
-server: ${domain}
-port: 443
-uuid: ${uuid}
-alterId: 0
-cipher: auto
-udp: true
-tls: true
-skip-cert-verify: true
-servername: ${domain}
-network: ws
-ws-opts:
-path: /vmess
-headers:
-Host: ${domain}
+  type: vmess
+  server: ${domain}
+  port: 443
+  uuid: ${uuid}
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  servername: ${domain}
+  network: ws
+  ws-opts:
+  path: /vmess
+   headers:
+    Host: ${domain}
 ==========================
 Vmess WS (CDN)
 ==========================
 - name: Vmess-$user
-type: vmess
-server: ${domain}
-port: 80
-uuid: ${uuid}
-alterId: 0
-cipher: auto
-udp: true
-tls: false
-skip-cert-verify: false
-servername: ${domain}
-network: ws
-ws-opts:
-path: /vmess
-headers:
-Host: ${domain}
+  type: vmess
+  server: ${domain}
+  port: 80
+  uuid: ${uuid}
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  servername: ${domain}
+  network: ws
+  ws-opts:
+  path: /vmess
+   headers:
+    Host: ${domain}
 ==========================
 Vmess gRPC (CDN)
 ==========================
 - name: Vmess-$user
-server: $domain
-port: 443
-type: vmess
-uuid: $uuid
-alterId: 0
-cipher: auto
-network: grpc
-tls: true
-servername: $domain
-skip-cert-verify: true
-grpc-opts:
-grpc-service-name: "vmess-grpc"
+  server: $domain
+  port: 443
+  type: vmess
+  uuid: $uuid
+  alterId: 0
+  cipher: auto
+  network: grpc
+  tls: true
+  servername: $domain
+  skip-cert-verify: true
+   grpc-opts:
+    grpc-service-name: "vmess-grpc"
 ==========================
 Link Vmess Account
 ==========================
