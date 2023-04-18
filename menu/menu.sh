@@ -39,6 +39,8 @@ CITY=$(cat /usr/local/etc/xray/city)
 WKT=$(cat /usr/local/etc/xray/timezone)
 DATE=$(date -R | cut -d " " -f -4)
 MYIP=$(curl -sS ipv4.icanhazip.com)
+tram=$( free -h | awk 'NR==2 {print $2}' )
+uram=$( free -h | awk 'NR==2 {print $3}' )
 clear
 echo -e "${RB}————————————————————————————————————————————————————————${NC}"
 echo -e "               ${GB}ZenVPN Service Autoscript${NC}              "
@@ -49,6 +51,7 @@ echo -e " ${YB}City${NC}             ${BB}: $CITY${NC}"
 echo -e " ${YB}Date${NC}             ${BB}: $DATE${NC}"
 echo -e " ${YB}Domain${NC}           ${BB}: $domain${NC}"
 echo -e " ${YB}IP${NC}               ${BB}: $MYIP${NC}"
+echo -e " ${YB}RAM Usage${NC}        ${BB}: $uram | $tram${NC}"
 echo -e " ${YB}NGINX STATUS${NC}     ${BB}: $status_nginx${NC}"
 echo -e " ${YB}XRAY STATUS${NC}      ${BB}: $status_xray${NC}"
 echo -e "${RB}————————————————————————————————————————————————————————${NC}"
