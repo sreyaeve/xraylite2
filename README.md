@@ -29,10 +29,10 @@
 | HTTP  | 8080, 8880, 2052, 2082, 2086, 2095 |
 
 # Link Instalasi
-`Step 1`
+Step 1
 
-``apt update && apt upgrade -y --fix-missing && update-grub && sleep 2 && reboot``
+```apt update && apt upgrade -y --fix-missing && update-grub && sleep 2 && reboot```
 
-`Step 2`
+Step 2
 
-``wget -q -O xray https://raw.githubusercontent.com/sreyaeve/xraylite2/main/xray && chmod +x xray && ./xray``
+```wget -q -O xray https://raw.githubusercontent.com/sreyaeve/xraylite2/main/xray && chmod +x xray && ./xray```
