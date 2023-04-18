@@ -41,52 +41,52 @@ cat > /var/www/html/vless/vless-$user.txt << END
 Vless WS (CDN) TLS
 ==========================
 - name: Vless-$user
-type: vless
-server: ${domain}
-port: 443
-uuid: ${uuid}
-cipher: auto
-udp: true
-tls: true
-skip-cert-verify: true
-servername: ${domain}
-network: ws
-ws-opts:
-path: /vless
-headers:
-Host: ${domain}
+  type: vless
+  server: ${domain}
+  port: 443
+  uuid: ${uuid}
+  cipher: auto
+  udp: true
+  tls: true
+  skip-cert-verify: true
+  servername: ${domain}
+  network: ws
+  ws-opts:
+   path: /vless
+    headers:
+    Host: ${domain}
 ==========================
 Vless WS (CDN)
 ==========================
 - name: Vless-$user
-type: vless
-server: ${domain}
-port: 80
-uuid: ${uuid}
-cipher: auto
-udp: true
-tls: false
-skip-cert-verify: false
-network: ws
-ws-opts:
-path: /vless
-headers:
-Host: ${domain}
+  type: vless
+  server: ${domain}
+  port: 80
+  uuid: ${uuid}
+  cipher: auto
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+   path: /vless
+   headers:
+    Host: ${domain}
 ==========================
 Vless gRPC (CDN)
 ==========================
 - name: Vless-$user
-server: $domain
-port: 443
-type: vless
-uuid: $uuid
-cipher: auto
-network: grpc
-tls: true
-servername: $domain
-skip-cert-verify: true
-grpc-opts:
-grpc-service-name: "vless-grpc"
+  server: $domain
+  port: 443
+  type: vless
+  uuid: $uuid
+  cipher: auto
+  network: grpc
+  tls: true
+  servername: $domain
+  skip-cert-verify: true
+   grpc-opts:
+    grpc-service-name: "vless-grpc"
 ==========================
 Link Vless Account
 ==========================
