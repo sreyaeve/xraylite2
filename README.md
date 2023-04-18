@@ -31,7 +31,7 @@
 # Link Instalasi
 Step 1
 
-```apt update && apt upgrade -y --fix-missing && update-grub && sleep 2 && reboot```
+'''apt update && apt upgrade -y --fix-missing && update-grub && sleep 2 && reboot'''
 
 Step 2
 
