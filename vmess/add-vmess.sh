@@ -98,7 +98,7 @@ Vmess WS (CDN) TLS
   servername: ${domain}
   network: ws
   ws-opts:
-  path: /vmess
+   path: /vmess
    headers:
     Host: ${domain}
 ==========================
@@ -117,7 +117,7 @@ Vmess WS (CDN)
   servername: ${domain}
   network: ws
   ws-opts:
-  path: /vmess
+   path: /vmess
    headers:
     Host: ${domain}
 ==========================
