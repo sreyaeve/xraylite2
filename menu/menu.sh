@@ -19,9 +19,17 @@ status_nginx="${GB}[ ON ]${NC}"
 else
 status_nginx="${RB}[ OFF ]${NC}"
 fi
-dtoday="$(vnstat | grep today | awk '{print $2" "substr ($3, 1, 3)}')"
-utoday="$(vnstat | grep today | awk '{print $5" "substr ($6, 1, 3)}')"
-ttoday="$(vnstat | grep today | awk '{print $8" "substr ($9, 1, 3)}')"
+# usage
+vnstat_profile=$(vnstat | sed -n '3p' | awk '{print $1}' | grep -o '[^:]*')
+vnstat -i ${vnstat_profile} >/root/t1
+bulan=$(date +%b)
+today=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
+todayd=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $8}')
+today_v=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $9}')
+today_rx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $2}')
+today_rxv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $3}')
+today_tx=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $5}')
+today_txv=$(vnstat -i ${vnstat_profile} | grep today | awk '{print $6}')
 dmon="$(vnstat -m | grep `date +%G-%m` | awk '{print $2" "substr ($3, 1 ,3)}')"
 umon="$(vnstat -m | grep `date +%G-%m` | awk '{print $5" "substr ($6, 1 ,3)}')"
 tmon="$(vnstat -m | grep `date +%G-%m` | awk '{print $8" "substr ($9, 1 ,3)}')"
@@ -35,19 +43,20 @@ clear
 echo -e "${RB}————————————————————————————————————————————————————————${NC}"
 echo -e "               ${GB}ZenVPN Service Autoscript${NC}              "
 echo -e "${RB}————————————————————————————————————————————————————————${NC}"
-echo -e " ${YB}Service Provider${NC} ${GB}: $ISP"
-echo -e " ${YB}Timezone${NC}         ${GB}: $WKT${NC}"
-echo -e " ${YB}City${NC}             ${GB}: $CITY${NC}"
-echo -e " ${YB}Date${NC}             ${GB}: $DATE${NC}"
-echo -e " ${YB}Domain${NC}           ${GB}: $domain${NC}"
-echo -e " ${YB}IP${NC}               ${GB}: $MYIP${NC}"
-echo -e " ${GB}NGINX STATUS${NC}     ${GB}: $status_nginx${NC}"
-echo -e " ${GB}XRAY STATUS${NC}      ${GB}: $status_xray${NC}"
+echo -e " ${YB}Service Provider${NC} ${BB}: $ISP"
+echo -e " ${YB}Timezone${NC}         ${BB}: $WKT${NC}"
+echo -e " ${YB}City${NC}             ${BB}: $CITY${NC}"
+echo -e " ${YB}Date${NC}             ${BB}: $DATE${NC}"
+echo -e " ${YB}Domain${NC}           ${BB}: $domain${NC}"
+echo -e " ${YB}IP${NC}               ${BB}: $MYIP${NC}"
+echo -e " ${YB}NGINX STATUS${NC}     ${BB}: $status_nginx${NC}"
+echo -e " ${YB}XRAY STATUS${NC}      ${BB}: $status_xray${NC}"
 echo -e "${RB}————————————————————————————————————————————————————————${NC}"
-echo -e "    ${GB} Bandwidth Monitoring Hari Ini${NC}"
-echo -e "    ${GB} Down   : $dtoday "
-echo -e "    ${GB} Up     : $utoday "
-echo -e "    ${GB} Total  : $ttoday "
+echo -e "        ${GB} Bandwidth Monitoring Hari Ini${NC}"
+echo -e "${RB}————————————————————————————————————————————————————————${NC}"
+echo -e "               ${GB} Down   : $today_rx $today_rxv"
+echo -e "               ${GB} Up     : $today_tx $today_txv"
+echo -e "               ${GB} Total  : $todayd $today_v"
 echo -e "${RB}————————————————————————————————————————————————————————${NC}"
 echo -e "                ${GB}        Xray Menu        ${NC}               "
 echo -e "${RB}————————————————————————————————————————————————————————${NC}"
