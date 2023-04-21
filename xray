@@ -96,14 +96,14 @@ sleep 0.5
 echo -e "${RED}└───────────────────────────────────────┘${NC}" 
 echo -e ""
 touch /usr/local/etc/xray/domain
-echo -e "${YB}Input Domain${NC} "
+echo -e "${YB} Pastikan Sudah Terpointing ke Cloudflare ${NC} "
 echo " "
 read -rp "Input domain kamu : " -e dns
 if [ -z $dns ]; then
 echo -e "Nothing input for domain!"
 else
 echo "$dns" > /usr/local/etc/xray/domain
-echo "$dns" > /var/lib/dnsvps.conf
+echo "DNS=$dns" > /var/lib/dnsvps.conf
 fi
 systemctl stop nginx
 systemctl stop xray
