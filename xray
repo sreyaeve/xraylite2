@@ -99,6 +99,8 @@ touch /etc/xray/domain
 touch /etc/v2ray/domain
 touch /etc/xray/scdomain
 touch /etc/v2ray/scdomain
+mkdir -p /var/lib/zenhost >/dev/null 2>&1
+echo "IP=" >> /var/lib/zenhost/ipvps.conf
 clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green         Autoscript Zenvpn               $NC"
