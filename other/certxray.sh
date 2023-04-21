@@ -11,7 +11,7 @@ clear
 echo -e "${GB}[ INFO ]${NC} ${YB}Start${NC} "
 sleep 0.5
 systemctl stop nginx
-domain=$(cat /var/lib/dnsvps.conf | cut -d'=' -f2)
+domain=$(cat /var/lib/zenhost/ipvps.conf | cut -d'=' -f2)
 Cek=$(lsof -i:80 | cut -d' ' -f1 | awk 'NR==2 {print $1}')
 if [[ ! -z "$Cek" ]]; then
 sleep 1
