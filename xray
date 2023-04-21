@@ -93,6 +93,13 @@ systemctl restart nginx
 clear
 apt install jq curl -y
 clear
+mkdir -p /etc/xray
+mkdir -p /etc/v2ray
+touch /etc/xray/domain
+touch /etc/v2ray/domain
+touch /etc/xray/scdomain
+touch /etc/v2ray/scdomain
+clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green         Autoscript Zenvpn               $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
@@ -142,11 +149,12 @@ RESULT=$(curl -sLX PUT "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_r
      
 echo "Host : $SUB_DOMAIN"
 echo $SUB_DOMAIN > /root/domain
-echo "$SUB_DOMAIN" > /root/scdomain
+        echo "$SUB_DOMAIN" > /root/scdomain
 	echo "$SUB_DOMAIN" > /etc/xray/scdomain
 	echo "$SUB_DOMAIN" > /etc/xray/domain
 	echo "$SUB_DOMAIN" > /etc/v2ray/domain
-echo "IP=$SUB_DOMAIN" > /var/lib/zenhost/ipvps.conf
+        echo "$SUB_DOMAIN" > /usr/local/etc/xray/domain
+        echo "IP=$SUB_DOMAIN" > /var/lib/zenhost/ipvps.conf
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 yellow "Domain added.."
