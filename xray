@@ -262,8 +262,16 @@ chmod +x about
 chmod +x clear-log
 chmod +x changer
 cd
-echo "0 0 * * * root xp" >> /etc/crontab
-echo "*/3 * * * * root clear-log" >> /etc/crontab
+cat > /etc/cron.d/re_otm <<-END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 2 * * * root /sbin/reboot
+END
+cat > /etc/cron.d/xp_otm <<-END
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+0 0 * * * root /usr/bin/xp
+END
 systemctl restart cron
 cat > /root/.profile << END
 if [ "$BASH" ]; then
