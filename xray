@@ -100,7 +100,7 @@ touch /etc/v2ray/domain
 touch /etc/xray/scdomain
 touch /etc/v2ray/scdomain
 mkdir -p /var/lib/zenhost >/dev/null 2>&1
-echo "IP=" >> /var/lib/zenhost/ipvps.conf
+echo "IP=" >> /var/lib/dnsvps.conf
 clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "$green         Autoscript Zenvpn               $NC"
@@ -151,18 +151,12 @@ RESULT=$(curl -sLX PUT "https://api.cloudflare.com/client/v4/zones/${ZONE}/dns_r
      
 echo "Host : $SUB_DOMAIN"
 echo $SUB_DOMAIN > /root/domain
-        echo "$SUB_DOMAIN" > /root/scdomain
-	echo "$SUB_DOMAIN" > /etc/xray/scdomain
-	echo "$SUB_DOMAIN" > /etc/xray/domain
-	echo "$SUB_DOMAIN" > /etc/v2ray/domain
         echo "$SUB_DOMAIN" > /usr/local/etc/xray/domain
-        echo "IP=$SUB_DOMAIN" > /var/lib/zenhost/ipvps.conf
+        echo "IP=$SUB_DOMAIN" > /var/lib/dnsvps.conf
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 yellow "Domain added.."
 sleep 3
-domain=$(cat /root/domain)
-cp -r /root/domain /etc/xray/domain
 
 # // ELif For Selection 1
 elif [[ $choose_domain == "1" ]]; then
@@ -186,12 +180,8 @@ read -rp "Input domain kamu : " -e dns
         Nothing input for domain!
         Then a random domain will be created"
     else
-        echo "$dns" > /root/scdomain
-	echo "$dns" > /etc/xray/scdomain
-	echo "$dns" > /etc/xray/domain
-	echo "$dns" > /etc/v2ray/domain
 	echo $dns > /usr/local/etc/xray/domain
-        echo "IP=$dns" > /var/lib/zenhost/ipvps.conf
+        echo "IP=$dns" > /var/lib/dnsvps.conf
     fi
 
 # // Else Do
