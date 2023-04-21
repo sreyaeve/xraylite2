@@ -9,6 +9,17 @@ BB='\e[34;1m'
 MB='\e[35;1m'
 CB='\e[35;1m'
 WB='\e[37;1m'
+red='\e[1;31m'
+green='\e[0;32m'
+yell='\e[1;33m'
+tyblue='\e[1;36m'
+NC='\e[0m'
+purple() { echo -e "\\033[35;1m${*}\\033[0m"; }
+tyblue() { echo -e "\\033[36;1m${*}\\033[0m"; }
+yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
+green() { echo -e "\\033[32;1m${*}\\033[0m"; }
+red() { echo -e "\\033[31;1m${*}\\033[0m"; }
+
 secs_to_human() {
 echo -e "${GB}Installation time : $(( ${1} / 3600 )) hours $(( (${1} / 60) % 60 )) minute's $(( ${1} % 60 )) seconds${NC}"
 }
@@ -87,11 +98,11 @@ touch /etc/v2ray/scdomain
 systemctl restart nginx
 clear
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green      Autoscript Zenvpn               $NC"
+echo -e "$green         Autoscript Zenvpn               $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "${RED}┌───────────────────────────────────────┐${NC}"
 sleep 0.5
-     red "         PANEL DOMAIN/SUBDOMAIN"
+     red "           PANEL DOMAIN/SUBDOMAIN"
 echo -e "${RED}└───────────────────────────────────────┘${NC}" 
 echo -e ""
 echo -e "${GREEN}1${NC}. Domain Pribadi"
@@ -101,9 +112,9 @@ read -p "$( echo -e "${GREEN}Ketik Disini ! ${NC}(${YELLOW}1/2${NC})${NC} " )" c
 # // Validating Automatic / Private
 if [[ $choose_domain == "2" ]]; then # // Using Automatic Domain
 # // String / Request Data
-sub=$(</dev/urandom tr -dc a-z0-9 | head -c4)
-DOMAIN=vpncantik.tech
-SUB_DOMAIN=${sub}.vpncantik.tech
+sub=$(</dev/urandom tr -dc a-z | head -c4)
+DOMAIN=xraypro.biz.id
+SUB_DOMAIN=vip${sub}.xraypro.biz.id
 CF_ID=cloudflaredomainpanel@gmail.com
 CF_KEY=91b7451cf8fed9cbc1c4ca31931ffce8741f6
 set -euo pipefail
@@ -138,14 +149,12 @@ echo $SUB_DOMAIN > /root/domain
 echo "$SUB_DOMAIN" > /root/scdomain
 	echo "$SUB_DOMAIN" > /etc/xray/scdomain
 	echo "$SUB_DOMAIN" > /etc/xray/domain
-	echo "$SUB_DOMAIN" > /etc/v2ray/domain
+	echo "$SUB_DOMAIN" > /usr/local/etc/xray/domain
 echo "IP=$SUB_DOMAIN" > /var/lib/zenhost/ipvps.conf
 sleep 1
 yellow() { echo -e "\\033[33;1m${*}\\033[0m"; }
 yellow "Domain added.."
 sleep 3
-domain=$(cat /root/domain)
-cp -r /root/domain /etc/xray/domain
 
 # // ELif For Selection 1
 elif [[ $choose_domain == "1" ]]; then
@@ -156,11 +165,11 @@ clear && clear && clear
 clear;clear;clear
 
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "$green      Autoscript Zenvpn               $NC"
+echo -e "$green         Autoscript Zenvpn               $NC"
 echo -e "\e[33m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "${RED}┌───────────────────────────────────────┐${NC}"
 sleep 0.5
-     red "        MASUKAN DOMAIN/SUBDOMAIN MU"
+     red "          MASUKAN DOMAIN/SUBDOMAIN MU"
 echo -e "${RED}└───────────────────────────────────────┘${NC}" 
 echo " "
 read -rp "Input domain kamu : " -e dns
