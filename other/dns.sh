@@ -16,7 +16,7 @@ echo -e "${RB}——————————————————————
 read -n 1 -s -r -p "Press any key to back on menu"
 dns
 else
-echo "DNS=$host" > /var/lib/dnsvps.conf
+echo "DNS=$host" > /var/lib/zenhost/ipvps.conf
 echo -e "${RB}————————————————————————————————————————————————————${NC}"
 echo -e "${YB}Dont Forget To Renew Cert${NC}"
 echo ""
